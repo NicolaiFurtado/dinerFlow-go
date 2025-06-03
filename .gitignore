@@ -1,0 +1,42 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories (Go modules)
+vendor/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Swag generated files
+docs/
+swagger/
+swagger.json
+swagger.yaml
+
+# Static/public generated files
+/public/**
+
+# Temporary files
+*.tmp
+*.bak
+
+# Compiled files
+bin/
+build/

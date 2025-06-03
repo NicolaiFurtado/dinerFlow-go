@@ -1,0 +1,1 @@
+ALTER TABLE `diner_items` ADD `cod` INT NOT NULL AFTER `id`;

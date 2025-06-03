@@ -1,0 +1,32 @@
+# .air.toml
+
+# Comando de build
+[build]
+  # O comando de build que será executado
+  cmd = "go build -o ./tmp/main"
+  # Caminho do binário gerado
+  bin = "tmp/main"
+  # Caminho completo para executar
+  full_bin = "./tmp/main"
+  # Diretório a ser observado
+  watch_dir = "."
+  # Diretórios a serem ignorados
+  exclude_dir = ["vendor", "tmp", "node_modules"]
+  # Extensões de arquivo que vão disparar rebuild
+  include_ext = ["go"]
+  # Arquivos a ignorar
+  exclude_file = ["*_test.go"]
+  # Atraso entre salvar e executar (ms)
+  delay = 1000
+  # Log de build opcional
+  log = "air.log"
+
+# Configurações da aplicação em execução
+[log]
+  time = true
+
+[color]
+  main = "yellow"
+  watcher = "cyan"
+  build = "green"
+  runner = "magenta"

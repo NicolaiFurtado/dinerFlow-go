@@ -1,0 +1,1 @@
+ALTER TABLE `diner_tab` CHANGE `orders` `order` JSON NOT NULL, CHANGE `update_info` `updated_info` JSON NULL DEFAULT NULL;

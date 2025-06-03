@@ -1,0 +1,1 @@
+ALTER TABLE `diner_items` CHANGE `cod` `cod` VARCHAR(4) NOT NULL;

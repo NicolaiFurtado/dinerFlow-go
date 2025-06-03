@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `firstname` VARCHAR(255) NOT NULL AFTER `id`, ADD `lastname` VARCHAR(255) NOT NULL AFTER `firstname`;

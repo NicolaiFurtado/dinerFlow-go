@@ -1,0 +1,1 @@
+ALTER TABLE `diner_tab` CHANGE `created_at` `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;

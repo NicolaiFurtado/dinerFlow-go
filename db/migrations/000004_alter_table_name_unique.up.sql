@@ -1,0 +1,1 @@
+ALTER TABLE diner_tables ADD CONSTRAINT unique_table_name UNIQUE (table_name);

@@ -1,0 +1,1 @@
+ALTER TABLE `diner_tables` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `status`, ADD `created_by` INT NOT NULL AFTER `created_at`, ADD `updated_info` JSON NULL AFTER `created_by`;
