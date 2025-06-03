@@ -1,0 +1,752 @@
+{
+	"info": {
+		"_postman_id": "a11b189a-6b7f-46be-b757-ab02809f50db",
+		"name": "Go",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24571007"
+	},
+	"item": [
+		{
+			"name": "Diner Flow",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Criar Usuário",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"nicolai\",\n  \"email\": \"func-1@diner.com\",\n  \"password\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Realizar Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"nicolai\",\n  \"password\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Realizar Logout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg3NzkyNX0.Zj_3E7-g3ymrEqH6-FNW49Tqb7_7rNOCyN0KuNPy0HA\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Protected",
+					"item": [
+						{
+							"name": "Table",
+							"item": [
+								{
+									"name": "Criar Mesa",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODkwNDc0OH0.Zkw7ckCWGxrysrsEcqJlbe8Rh79_WTfdgtww9wXFP9E",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"table_name\": \"Mesa 2\",\n    \"seats\": 4\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/createTable",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"createTable"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Atualizar Mesa",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg4NTIwN30.bPJxUKrhtM1CvHLheZa4iJ7ePS3g53lShuaFVilunUI",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 1,\n    \"table_name\": \"Mesa 1\",\n    \"seats\": 6\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/editTable",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"editTable"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Atualizar Mesa Copy",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg4NTIwN30.bPJxUKrhtM1CvHLheZa4iJ7ePS3g53lShuaFVilunUI",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 5\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/deleteTable",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"deleteTable"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Turnos",
+							"item": [
+								{
+									"name": "Iniciar Turno",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg5OTM3N30.PUlLhwXLy0QVqFT9pgsprwtmtfO-NZkfND86aUWTMmg",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg3NzkyNX0.Zj_3E7-g3ymrEqH6-FNW49Tqb7_7rNOCyN0KuNPy0HA\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/startShift",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"startShift"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Items",
+							"item": [
+								{
+									"name": "Criar Item",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg5MjUyN30.nq64iFXa9DUledwVJQeWqbK-lAXyeA2UUz2kXcKZTm8",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"Tropical Smoothie\",\n  \"description\": \"Blend of mango, pineapple, and coconut milk.\",\n  \"price\": \"7.50\",\n  \"category\": \"Beverage\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/createItem",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"createItem"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Atualizar Item",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg5MzEzOH0.B1h1caAFxVag8z8jr3sgAP1OurffK_makjJYkLGGkGU",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 51,\n  \"cod\": \"74170\",\n  \"name\": \"Tropical Smoothie\",\n  \"description\": \"Blend of mango, pineapple, and coconut milk.\",\n  \"price\": \"20.00\",\n  \"category\": \"Beverage\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/editItem",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"editItem"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Atualizar Item",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg5MzEzOH0.B1h1caAFxVag8z8jr3sgAP1OurffK_makjJYkLGGkGU",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 51,\n  \"cod\": \"74170\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/deleteItem",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"deleteItem"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Tab",
+							"item": [
+								{
+									"name": "Create new Tab",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODkwNDc0OH0.Zkw7ckCWGxrysrsEcqJlbe8Rh79_WTfdgtww9wXFP9E",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"table_id\": 5,\n  \"client_name\": \"João da Silva\",\n  \"order\": {\n    \"items\": [\n      {\n        \"item_cod\": 62509,\n        \"qtd\": 1,\n        \"notes\": \"\"\n      },\n      {\n        \"item_cod\": 66202,\n        \"qtd\": 1,\n        \"notes\": null\n      }\n    ]\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/openTab",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"openTab"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Tab Orders",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg5OTM3N30.PUlLhwXLy0QVqFT9pgsprwtmtfO-NZkfND86aUWTMmg",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 1,\n    \"order\": {\n        \"items\": [\n        {\n            \"item_cod\": 13973,\n            \"qtd\": 1,\n            \"notes\": \"\"\n        },\n        {\n            \"item_cod\": 26951,\n            \"qtd\": 1,\n            \"notes\": \"Without chesse\"\n        },\n        {\n            \"item_cod\": 41843,\n            \"qtd\": 1,\n            \"notes\": \"Extra Hot\"\n        },\n        {\n            \"item_cod\": 60857,\n            \"qtd\": 1,\n            \"notes\": \"\"\n        }\n        ]\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/updateOrder",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"updateOrder"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove Order",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg5OTM3N30.PUlLhwXLy0QVqFT9pgsprwtmtfO-NZkfND86aUWTMmg",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"order\": {\n    \"remove\": [62509]\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/removeOrder",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"removeOrder"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Close Tab",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODkwMTg0NX0.0zABVd0oV1wziuIp36bvQplVKywqfZYfXysAl6EqcdY",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/closeTab",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"closeTab"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Finish Payments",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODkwMTg0NX0.0zABVd0oV1wziuIp36bvQplVKywqfZYfXysAl6EqcdY",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 1,\n  \"type_payment\": \"PIX\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/finishPayment",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"finishPayment"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Close",
+							"item": [
+								{
+									"name": "Close Day",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODkwNTc5Nn0.rRQmHfp64bGn6XtxdPVl1v5_o9gmYFbEkNGr4tcOspA",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/closeDay",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"closeDay"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Non-Protected",
+					"item": [
+						{
+							"name": "Table",
+							"item": [
+								{
+									"name": "Get All Tables",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg4NDY0Mn0.Dlt054tfhemmFICg7SilrZZgrOtu5tAO7SdrVekTNO4",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/tables?table_name=&seats=&status=",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"tables"
+											],
+											"query": [
+												{
+													"key": "table_name",
+													"value": ""
+												},
+												{
+													"key": "seats",
+													"value": ""
+												},
+												{
+													"key": "status",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Items",
+							"item": [
+								{
+									"name": "Get All Items",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImV4cCI6MTc0ODg5OTM3N30.PUlLhwXLy0QVqFT9pgsprwtmtfO-NZkfND86aUWTMmg",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/items?name=&category=",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"items"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": ""
+												},
+												{
+													"key": "category",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

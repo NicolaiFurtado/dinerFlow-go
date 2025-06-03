@@ -26,6 +26,7 @@ Diner Flow is a RESTful API developed in Go using the Gin framework. It provides
 - **Swag** (Swagger doc generator)
 - **Postman** (API testing)
 - **Docker** (optional, for deployment)
+- **golang-migrate** (for schema migrations)
 
 ---
 
@@ -58,15 +59,27 @@ DB_NAME=diner-flow
 
 ---
 
-## 🗃️ Database Setup
+## 🗃️ Database Setup (via Migrations)
 
-You can use the provided SQL dump to initialize your test database:
+### 1. Create the Database
+
+Ensure MySQL is running and create the database:
 
 ```bash
-mysql -u root -p diner-flow < database/dump.sql
+mysql -u root -p -e "CREATE DATABASE diner-flow"
 ```
 
-Make sure the database `diner-flow` exists before running the command.
+### 2. Run Migrations
+
+You need to have [`golang-migrate`](https://github.com/golang-migrate/migrate) installed.
+
+Then run:
+
+```bash
+migrate -path db/migrations -database "mysql://root:root@tcp(localhost:3306)/diner-flow" up
+```
+
+This will apply all migration files in `db/migrations/` and set up your schema.
 
 ---
 
@@ -91,13 +104,13 @@ You should see `PASS` for each test, covering:
 
 ## 📮 Postman Collection
 
-You can import the included Postman collection (`docs/postman_collection.json`) into Postman to test all endpoints easily.
+You can import the included Postman collection (`Diner.postman_collection.json`) into Postman to test all endpoints easily.
 
 Steps:
 
 1. Open Postman.
 2. Click **Import**.
-3. Select the `postman_collection.json` file.
+3. Select the `Diner.postman_collection.json` file.
 4. Use the environment variables as needed (e.g., for bearer token).
 
 ---
@@ -156,18 +169,13 @@ http://localhost:8080/swagger/index.html
 - [x] Swagger generation
 - [x] Postman collection
 - [x] Unit testing
+- [x] Migration support
 - [ ] Docker containerization
 - [ ] GitHub Actions for CI/CD
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
 ## 👤 Author
 
-**Nicolai Furtado**
+**Nicolai Furtado**  
 [GitHub](https://github.com/NicolaiFurtado)
